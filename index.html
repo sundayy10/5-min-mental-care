@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Mind5 - 5분 감정 기록 & 멘탈케어</title>
+  <!-- Google Fonts: Outfit & Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <!-- Main Simulator Container for Desktop View -->
+  <div class="simulator-wrapper">
+    <div class="phone-frame">
+      <!-- Phone Notch / Status Bar -->
+      <div class="phone-header">
+        <div class="status-time" id="statusTime">10:42</div>
+        <div class="notch"></div>
+        <div class="status-icons">
+          <svg class="status-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.58 10.57 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+          <svg class="status-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M17 5H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm-1 10H4V9h12v6zm4-6v6c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2z"/></svg>
+        </div>
+      </div>
+
+      <!-- APP CONTENT CONTAINER -->
+      <div class="app-container">
+
+        <!-- 1. LANDING & LOGIN PAGE -->
+        <section id="pageLogin" class="app-page active">
+          <div class="login-hero">
+            <div class="logo-area">
+              <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 11.13 4.14 10.3 4.39 9.5L8.79 13.9C9.18 14.29 9.81 14.29 10.2 13.9L12.5 11.6L14.7 13.8C15.09 14.19 15.72 14.19 16.11 13.8L19.4 10.51C19.78 11.28 20 12.12 20 13C20 17.42 16.42 21 12 20Z" fill="url(#logoGrad)"/>
+                  <defs>
+                    <linearGradient id="logoGrad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#8A2387"/>
+                      <stop offset="0.5" stop-color="#E94057"/>
+                      <stop offset="1" stop-color="#F27121"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <h1 class="brand-name">Mind5</h1>
+              <p class="brand-tagline">하루 5분, 나의 감정을 마주하는 시간</p>
+            </div>
+            
+            <!-- Features Carousel Info Cards -->
+            <div class="intro-carousel">
+              <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide">
+                  <div class="slide-card">
+                    <span class="slide-icon">⏱️</span>
+                    <h3>쉽고 빠른 5분 기록</h3>
+                    <p>복잡하고 긴 일기 대신, 단 5분만 내어 감정을 핵심 키워드와 함께 직관적으로 정리하세요.</p>
+                  </div>
+                </div>
+                <div class="carousel-slide">
+                  <div class="slide-card">
+                    <span class="slide-icon">📅</span>
+                    <h3>새벽 5시 기준의 하루</h3>
+                    <p>밤낮이 바뀌거나 늦게 자는 날에도 걱정 없이, 오전 5시부터 익일 4시 59분까지를 '오늘'로 묶어 관리합니다.</p>
+                  </div>
+                </div>
+                <div class="carousel-slide">
+                  <div class="slide-card">
+                    <span class="slide-icon">⚡</span>
+                    <h3>맞춤형 하루 세션</h3>
+                    <p>내 생활 패턴에 맞게 오전, 오후, 퇴근 후 등 시간 단위를 마음대로 묶어서 세션을 지정할 수 있습니다.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-dots" id="carouselDots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="login-actions">
+            <button id="btnKakaoLogin" class="btn-login btn-kakao">
+              <span class="login-icon-wrap">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#3A1D1D" d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.706 4.8 4.27 5.99-.174.59-.628 2.14-.718 2.474-.112.417.14.412.296.309.122-.08 1.956-1.314 2.735-1.838.498.07.996.108 1.417.108 4.97 0 9-3.185 9-7.115C21 6.185 16.97 3 12 3z"/></svg>
+              </span>
+              카카오 계정으로 계속하기
+            </button>
+            <button id="btnGoogleLogin" class="btn-login btn-google">
+              <span class="login-icon-wrap">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#EA4335" d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.2-5.136 4.2A5.6 5.6 0 0 1 8.4 13c0-3.09 2.51-5.6 5.6-5.6 1.458 0 2.784.56 3.784 1.474l3.125-3.125C18.99 3.966 16.7 3 14 3c-5.52 0-10 4.48-10 10s4.48 10 10 10c5.77 0 9.8-4.06 9.8-9.8 0-.61-.06-1.21-.16-1.8-.75.02-21.4.085-21.4.085z"/></svg>
+              </span>
+              Google 계정으로 계속하기
+            </button>
+          </div>
+        </section>
+
+        <!-- 2. MAIN DASHBOARD PAGE -->
+        <section id="pageDashboard" class="app-page">
+          <header class="app-header">
+            <div class="user-profile">
+              <div class="user-avatar" id="userAvatar">Y</div>
+              <div>
+                <h2 class="welcome-text" id="welcomeMsg">반가워요, 유나님</h2>
+                <p class="date-display" id="todayDate">2026년 6월 5일 금요일</p>
+              </div>
+            </div>
+            <button class="btn-icon" id="btnSettingsToggle">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+          </header>
+
+          <!-- Daily Logging Progress Widget -->
+          <div class="dashboard-card progress-widget">
+            <div class="widget-header">
+              <span class="widget-title">오늘의 감정 완성도</span>
+              <span class="widget-value" id="progressText">0 / 4 완료</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+            </div>
+            <p class="progress-hint">오전 05:00부터 시작된 하루가 진행 중입니다.</p>
+          </div>
+
+          <!-- Daily Overall Mood Widget -->
+          <div id="overallMoodContainer">
+            <!-- Dynamically populated overall mood card -->
+          </div>
+
+          <!-- Timeline Sessions List -->
+          <div class="timeline-section">
+            <div class="section-title-bar">
+              <h3>오늘의 세션</h3>
+              <button class="text-link-btn" id="btnGoToCustomizer">세션 편집</button>
+            </div>
+            <div class="session-timeline" id="sessionTimeline">
+              <!-- Dynamically populated timeline cards -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. STATISTICS / ANALYTICS PAGE -->
+        <section id="pageStats" class="app-page">
+          <header class="app-header">
+            <div>
+              <h2 class="page-title">마음 분석서</h2>
+              <p class="subtitle-text">최근 7일간의 감정 통계</p>
+            </div>
+          </header>
+
+          <div class="stats-scroll-container">
+            <!-- Weekly Trend Chart Card -->
+            <div class="dashboard-card chart-card">
+              <h3>감정 흐름 추이</h3>
+              <p class="chart-subtitle">긍정/안정/부정 감정의 변화</p>
+              <div class="canvas-wrapper">
+                <canvas id="trendChart" width="300" height="180"></canvas>
+              </div>
+            </div>
+
+            <!-- Mood Distribution Card -->
+            <div class="dashboard-card chart-card">
+              <h3>감정 분포 비율</h3>
+              <div class="donut-chart-container">
+                <div class="canvas-wrapper-donut">
+                  <canvas id="donutChart" width="160" height="160"></canvas>
+                </div>
+                <div class="donut-legend" id="donutLegend">
+                  <!-- Legend items will be added dynamically -->
+                </div>
+              </div>
+            </div>
+
+            <!-- AI Insight Card -->
+            <div class="dashboard-card insight-card">
+              <div class="insight-icon">✨</div>
+              <div class="insight-content">
+                <h4>마음 AI 가이드</h4>
+                <p id="insightText">감정 기록을 시작하면 인공지능이 마음의 패턴을 분석해 드립니다. 지금 오늘 하루의 감정을 먼저 채워보세요!</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. CUSTOMIZER / SETTINGS PAGE -->
+        <section id="pageSettings" class="app-page">
+          <header class="app-header">
+            <div>
+              <h2 class="page-title">생활 패턴 맞춤 설정</h2>
+              <p class="subtitle-text">하루의 시간대를 내 패턴에 맞게 조절합니다.</p>
+            </div>
+            <button class="btn-icon" id="btnCloseSettings">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </header>
+
+          <div class="settings-scroll-container">
+            <!-- Day Standard Alert -->
+            <div class="info-banner">
+              <span class="info-banner-icon">ℹ️</span>
+              <p class="info-banner-text"><strong>'하루'의 기준: 오전 05:00 ~ 익일 04:59</strong><br>모든 세션의 시작과 끝은 이 범위 내에서 자유롭게 조정이 가능합니다.</p>
+            </div>
+
+            <!-- Quick Template Preset Selector -->
+            <div class="settings-section-card">
+              <h3>시간대 템플릿</h3>
+              <div class="preset-buttons">
+                <button class="btn-preset active" id="preset4">4구간 (기본)</button>
+                <button class="btn-preset" id="presetHourly">매시간 (24시간)</button>
+                <button class="btn-preset" id="preset3">3구간 (단순)</button>
+              </div>
+            </div>
+
+            <!-- Custom Session Editor List -->
+            <div class="settings-section-card">
+              <div class="section-title-row">
+                <h3>나만의 세션 편집</h3>
+                <button class="btn-small-action" id="btnAddSession">+ 세션 추가</button>
+              </div>
+              <p class="section-desc">세션의 시작 시간이 이전 세션의 종료 시간과 맞닿도록 자동으로 연결됩니다.</p>
+              <div class="editor-session-list" id="editorSessionList">
+                <!-- Dynamically populated editable sessions -->
+              </div>
+              
+              <div class="editor-actions">
+                <button class="btn-primary" id="btnSaveSessions">설정 저장</button>
+                <button class="btn-secondary" id="btnResetSessions">초기화</button>
+              </div>
+            </div>
+
+            <!-- Account Settings & Logout -->
+            <div class="settings-section-card account-card">
+              <h3>계정 관리</h3>
+              <div class="account-row">
+                <div class="account-info">
+                  <span class="account-platform" id="loginPlatform">Kakao</span>
+                  <span class="account-email" id="loginEmail">yuna@example.com</span>
+                </div>
+                <button class="btn-text-danger" id="btnLogout">로그아웃</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- NAVIGATION BAR -->
+      <nav class="app-nav" id="appNav">
+        <button class="nav-item active" data-page="pageDashboard">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          <span>홈</span>
+        </button>
+        <button class="nav-item" data-page="pageStats">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+          <span>리포트</span>
+        </button>
+        <button class="nav-item" data-page="pageSettings">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          <span>설정</span>
+        </button>
+      </nav>
+
+    </div>
+  </div>
+
+  <!-- 5. EMOTION LOGGING BOTTOM SHEET / MODAL -->
+  <div class="modal-overlay" id="loggingModal">
+    <div class="bottom-sheet">
+      <div class="bottom-sheet-handle"></div>
+      
+      <div class="modal-header-row">
+        <div>
+          <span class="session-badge" id="modalSessionTime">오전 세션 (05:00 - 12:00)</span>
+          <h3 class="modal-title">지금 마음은 어떤가요?</h3>
+        </div>
+        <button class="modal-close" id="btnCloseModal">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Emotion Selector Cards Grid -->
+      <div class="emotion-grid" id="emotionGrid">
+        <!-- Dynamically populated in app.js -->
+      </div>
+
+      <!-- Tag selector -->
+      <div class="form-group">
+        <label class="form-label">함께한 일이나 상황 (최대 3개)</label>
+        <div class="tag-pool" id="tagPool">
+          <button class="tag-chip" data-tag="업무">💻 업무</button>
+          <button class="tag-chip" data-tag="휴식">🛋️ 휴식</button>
+          <button class="tag-chip" data-tag="대화">💬 대화</button>
+          <button class="tag-chip" data-tag="식사">🍲 식사</button>
+          <button class="tag-chip" data-tag="운동">🏃 운동</button>
+          <button class="tag-chip" data-tag="취미">🎨 취미</button>
+          <button class="tag-chip" data-tag="가족">👨‍👩‍👦 가족</button>
+          <button class="tag-chip" data-tag="공부">📚 공부</button>
+        </div>
+      </div>
+
+      <!-- Quick 1-sentence note -->
+      <div class="form-group">
+        <div class="form-label-row">
+          <label class="form-label">한 줄 마음 정리</label>
+          <span class="char-counter"><span id="charCount">0</span>/60</span>
+        </div>
+        <input type="text" id="inputNote" class="input-note-text" placeholder="마음을 가볍게 적어보세요 (예: 프로젝트 성공으로 뿌듯하다)" maxlength="60">
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-primary" id="btnSaveLog">마음 기록하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS bundle -->
+  <script src="app.js"></script>
+</body>
+</html>

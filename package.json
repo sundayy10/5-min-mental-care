@@ -1,0 +1,12 @@
+{
+  "name": "mind5",
+  "version": "1.0.0",
+  "description": "5-Minute Emotion Logger & Mental Care App",
+  "private": true,
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}
